@@ -1,0 +1,27 @@
+1. npm install @ngrx/{store,effects,entity,store-devtools}
+
+2. npm install @ngrx/schematics -D
+
+3. ng config cli.defaultCollection @ngrx/schematics
+
+4. ng generate feature accounts/Account -m accounts/accounts.module.ts --spec false
+
+5. export interface State {
+  name: string;
+  transactions: any;
+}
+
+export const initialState: State = {} as State;
+
+
+
+6. export class AccountsComponent implements OnInit {
+
+  constructor(private store: Store<State>) { }
+
+  ngOnInit() {
+    // console.log('testtest');
+    this.store.dispatch(new LoadAccounts());
+  }
+
+}
